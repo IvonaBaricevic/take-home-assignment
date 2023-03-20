@@ -1,0 +1,7 @@
+# TitaniumCore
+
+TitaniumCore is an advanced file analysis tool that analyzes files at millisecond speeds using a powerful engine. It can be used for applications of any scale, from a few samples to billions of samples daily, offering a wide range of use cases and satisfying a variety of user demands.
+
+Its scalability enables the analysis of many files and reporting of results, while the rules engine calculates the threat level based on rules provided by ReversingLabs and customer-supplied YARA-rules. Extracted files can automatically be routed to additional analysis tools (such as decompilers, debuggers, sandboxes, or tools that run files in a virtual machine) or an analyst for further evaluation based on the threat level and type, making the most efficient use of security assets. 
+
+With its advanced file analysis capabilities, TitaniumCore provides accurate and reliable results, making it an ideal security solution for your business. No other product exposes the breadth and depth of threat indicators extracted by TitaniumCore.
