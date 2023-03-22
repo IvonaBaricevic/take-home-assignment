@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Z1000 API Documentation</title>
+</head>
+<body>
+	<h1>Welcome to the documentation for the Z1000 API</h1>
+	<p>This API provides users with access to the original samples that were analyzed and enables them to retrieve attachments for further investigation or analysis.</p>
+<h2>Endpoint</h2>
+<p>The endpoint for the API is /api/v1/download_samples/. The allowed HTTP methods are GET and POST.</p>
+
+<h2>Authentication</h2>
+<p>The authentication scheme used by the API is Basic authentication. Please provide the username z1000_user and the password z1000_password_example_123 in the authentication headers.</p>
+
+<h2>Query Parameters</h2>
+<p>The API supports the following query parameters:</p>
+<ul>
+	<li>date: Only returns items that were analyzed on a specific date (ignored when using the POST method)</li>
+	<li>user_id: Only returns items uploaded by that specific user (ignored when using the POST method)</li>
+</ul>
+
+<h2>GET Request</h2>
+<p>To retrieve a list of all files available for download, send a GET request to the endpoint. The API will respond with a JSON object containing a list of sample IDs:</p>
+
+<p>json</p>
+<pre>
+{
+  "samples": [    "sample1",    "sample2",    "sample3"  ]
+}
+</pre>
+
+<h2>POST Request</h2>
+<p>To download specific files, send a POST request to the endpoint with a JSON body that includes the IDs of the files you wish to download. The API will respond with a JSON object containing a download link for each individual file:</p>
+
+<p>Request body:</p>
+
+<p>json</p>
+<pre>
+{
+  "samples": [    "sample1",    "sample2"  ]
+}
+</pre>
+
+<p>Response body:</p>
+
+<p>json</p>
+<pre>
+{
+  "downloads": [    {      "sample_id": "sample1",      "download_link": "https://example.com/downloads/sample1.zip"    },    {      "sample_id": "sample2",      "download_link": "https://example.com/downloads/sample2.zip"    }  ]
+}
+</pre>
+
+<h2>Example Request</h2>
+<p>Here's an example request using Python:</p>
+
+<p>python</p>
+<pre>
+import requests
+
+url = "https://example.com/api/v1/download_samples/"
+auth = ("z1000_user", "z1000_password_example_123")
+params = {"date": "2022-01-01", "user_id": "1234"}
+response = requests.get(url, auth=auth, params=params)
+
+if response.status_code == 200:
+    samples = response.json()["samples"]
+    print(f"Found {len(samples)} samples")
+else:
+    print("Failed to retrieve samples")
+</pre>
+
+</body>
+</html>	
